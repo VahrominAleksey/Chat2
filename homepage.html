@@ -1,0 +1,85 @@
+<html>
+   <head>
+      <title> Чатъ кривой недопиленныйъ </title>
+      <link rel="stylesheet" type="text/css" href="style.css">
+      <script type="text/javascript" src="script.js"></script>
+   </head>
+   <body onload="User(forma05,forma3);">
+      <div id="first">
+      <table width="715" border="1"
+           align="center" cellspacing="0" cellspadding="10">
+         <tr bgcolor="darkred"> <td colspan="3" height="40"><Strong><h1>Чатик</h1></Strong></td>
+         </tr> 
+         
+         <tr bgcolor="oldlace"> <td width="600" height="60"><h2>Никнейм пользователя:</h2>
+         <form name="forma05">
+              <input type="text" name="text1" size="90"
+                    maxlength="200" readonly>
+         </form>  
+         </td>
+
+
+         <td>
+            <form name="forma0">
+              <input type="text" name="text1" size="30"
+                    maxlength="200" value="Введите текст..."
+                                    onClick="cl(forma0);"><br></br>
+              <input type="button" class="new" name="button1" value="Изменить никнейм" 
+                                                onClick="changeNick(forma0,forma05);" onClick="KeepInMemory(forma0);"><br></br>
+            </form>
+         </td>
+
+         <tr bgcolor="oldlace"> <td width="600" height="20">
+               <form name="forma1">
+                 Выберите страницу:<br>
+                 <input type="checkbox" id="check1" name="lan" value="1"checked>1
+                 <input type="checkbox" id="check2" name="lan" value="2">2
+                 <input type="checkbox" id="check3" name="lan" value="3">3
+                 <input type="checkbox" id="check4" name="lan" value="4">4
+                 <input type="checkbox" id="check5" name="lan" value="5">5
+                 <input type="checkbox" id="check6" name="lan" value="...">...
+               </form>
+         </td>
+         <td>
+               <form name="forma2">
+                 <input type="button" class="new" name="button" value="Просмотреть историю" 
+                                                    onClick="WatchHistory(forma1,forma3);">
+               </form>
+         </td>
+         <tr bgcolor="oldlace"> <td width="600" height="300">
+               <form name="forma3">
+                 <h5>
+                 <textarea cols="80" name="text1" rows="18" wrap="virtual" readonly></textarea>
+                 </h5>
+               </form>
+         </td>
+         <td>
+               <form name="forma4">
+                 <input type="button" class="new" name="button" value="Удалить сообщения"
+                                                    onClick="DeleteMessage(forma3);">
+                 <input type="button" class="new" name="button" value="Редактировать сообщения"
+                                                    onClick="ChangeMessage(forma3);">
+                 <input type="button" class="new2" name="button2" value="Состояние сервера:Сервер лежит" disabled><br></br>
+               </form>
+         </td>
+         </tr>
+
+         <tr bgcolor="oldlace"> <td width="600" height="30">
+              <form name="forma5">
+              <input type="text" name="text1" size="90"
+                    maxlength="200" value="Введите текст..."
+                                    onClick="cl(forma5);">
+              </form>
+         </td>
+         <td>
+             <form name="forma6">
+                <input type="button" class="new3" name="text1" value="Отправить" 
+                                                   onClick="WriteMessage(forma05,forma5,forma3);">
+             </form> 
+         </td>
+         </tr>
+
+      </table> 
+      </div>  
+   </body >
+</html>
