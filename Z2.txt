@@ -1,0 +1,15 @@
+GET http://localhost:999/chat?token=TN27EN HTTP/1.1
+Accept: text/html, application/xhtml+xml, */*
+Accept-Language: ru-RU
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko
+Accept-Encoding: gzip, deflate
+Host: localhost:999
+DNT: 1
+Connection: Keep-Alive
+
+
+HTTP/1.1 200 OK
+Content-length: 37
+Access-control-allow-origin: *
+
+{"token":"TN19EN","messages":["gsd"]}
