@@ -46,6 +46,11 @@ function WriteMessage(obj,obj2,obj3){
 }
 function DeleteMessage(obj){
    obj.text1.value="";
+   if(typeof(Storage) == "undefined") {
+		alert('localStorage is not accessible');
+		return;
+	}
+   localStorage.setItem("taskList2", JSON.stringify(obj.text1.value));
 }
 function ChangeMessage(obj){
    obj.text1.value="Я без понятия как это сделать((9(";
