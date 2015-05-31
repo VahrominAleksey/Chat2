@@ -1,3 +1,9 @@
+var appState = {
+    mainUrl: 'http://localhost:999/chat',
+    token: 'TE11EN'
+};
+
+
 function changeNick(obj,obj2){
    var a=obj.text1.value;
    
@@ -32,6 +38,16 @@ function WatchHistory(obj,obj2){
       }
    }
 }
+
+
+var theMessage = function(nick, text, stat) {
+	return {
+		username: nick,
+		messageText: text,
+		id: 1,
+        status: stat
+	};
+};
 function WriteMessage(obj,obj2,obj3){
    var a=obj.text1.value;
    var b=obj2.text1.value;
@@ -90,4 +106,50 @@ function restore2() {
 	var item = localStorage.getItem("taskList2");
 	return item && JSON.parse(item);
 }
+function get(url, continueWith, continueWithError) {
+    ajax('GET', url, null, continueWith, continueWithError);
+}
 
+function post(url, data, continueWith, continueWithError) {
+    ajax('POST', url, data, continueWith, continueWithError);
+}
+
+function ajax(method, url, data, continueWith, continueWithError) {
+    var xhr = new XMLHttpRequest();
+
+    continueWithError = continueWithError || defaultErrorHandler;
+    xhr.open(method || 'GET', url, true);
+
+    xhr.onload = function () {
+        if (xhr.readyState !== 4)
+            return;
+
+        if (xhr.status != 200) {
+            continueWithError('Error on the server side, response ' + xhr.status);
+            return;
+        }
+
+        if (isError(xhr.responseText)) {
+            continueWithError('Error on the server side, response ' + xhr.responseText);
+            return;
+        }
+
+        continueWith(xhr.responseText);
+    };
+
+    xhr.ontimeout = function () {
+        continueWithError('Server timed out !');
+    }
+
+    xhr.onerror = function (e) {
+        var errMsg = 'Server connection error !\n' +
+    	'\n' +
+    	'Check if \n' +
+    	'- server is active\n' +
+    	'- server sends header "Access-Control-Allow-Origin:*"';
+
+        continueWithError(errMsg);
+    };
+
+    xhr.send(data);
+}
